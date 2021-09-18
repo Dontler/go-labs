@@ -7,14 +7,9 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"unicode"
 )
 
-const spaceSymbol = 32
-const dotSymbol = 46
-const lowCaseA = 65
-const lowCaseZ = 90
-const upperCaseA = 97
-const upperCaseZ = 122
 
 type SLConfig struct {
 	DocumentRoot string
@@ -86,14 +81,14 @@ func resolveSentenceWords(fileName string) map[string][]int {
 		} else if err != nil {
 			log.Fatal(err.Error())
 		}
-		for i := 0; i < n; i++ {
-			symbol := buffer[i]
-			if symbol >= lowCaseA && symbol <= lowCaseZ || symbol >= upperCaseA && symbol <= upperCaseZ {
+		fragment := string(buffer[:n])
+		for _, symbol := range fragment {
+			if unicode.IsLetter(rune(symbol)) {
 				word += string(symbol)
 			} else {
-				if symbol == dotSymbol {
+				if string(symbol) == "." {
 					sentenceCounter++
-				} else if symbol == spaceSymbol {
+				} else if string(symbol) == " " {
 					if wordsMap[word] == nil {
 						wordsMap[word] = []int{sentenceCounter}
 					} else {
