@@ -23,6 +23,8 @@ func main() {
 	slConfig := labs.SLConfig{DocumentRoot: "C:\\Users\\sofya\\GolandProjects\\GoLabs\\Lab1"}
 	secondLab := labs.SecondLab{Config: slConfig}
 
-	fmt.Println("Tsk 3:")
+	fmt.Println("Task 3:")
 	secondLab.ThirdTask()
+	fmt.Println("Task 7:")
+	secondLab.SeventhTask()
 }
