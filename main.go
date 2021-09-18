@@ -17,4 +17,12 @@ func main() {
 	firstLab.TenthTask()
 	fmt.Println("Task 11:")
 	firstLab.EleventhTask()
+
+	fmt.Println("Second lab")
+
+	slConfig := labs.SLConfig{DocumentRoot: "C:\\Users\\sofya\\GolandProjects\\GoLabs\\Lab1"}
+	secondLab := labs.SecondLab{Config: slConfig}
+
+	fmt.Println("Tsk 3:")
+	secondLab.ThirdTask()
 }
