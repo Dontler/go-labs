@@ -29,7 +29,7 @@ func (sl *SecondLab) ThirdTask() {
 
 func (sl *SecondLab) SeventhTask() {
 	var filePath = sl.Config.DocumentRoot + string(os.PathSeparator) + "filesDir" + string(os.PathSeparator) + "Sentences.txt"
-	wordsMap := resolveSentenceWords(filePath)
+	wordsMap := resolveWordsInSentences(filePath)
 	for word, sentences := range wordsMap {
 		fmt.Printf("%s: %v\n", word, sentences)
 	}
@@ -62,7 +62,7 @@ func getTxtFilesInfo(dir string) map[string]int {
 	return txtFilesMap
 }
 
-func resolveSentenceWords(fileName string) map[string][]int {
+func resolveWordsInSentences(fileName string) map[string][]int {
 	wordsMap := make(map[string][]int)
 
 	file, err := os.Open(fileName)
